@@ -1,4 +1,19 @@
 importScripts('/js/indexedDBsw.js');
+caches.keys().then(cacheNames => {
+    cacheNames.forEach(cacheName => {
+        caches.delete(cacheName);
+    });
+});
+var deleteDBRequest = indexedDB.deleteDatabase('nombre_de_tu_basededatos');
+deleteDBRequest.onsuccess = function(event) {
+    console.log("Base de datos eliminada exitosamente");
+};
+deleteDBRequest.onerror = function(event) {
+    console.log("Error al eliminar la base de datos");
+};
+localStorage.clear(); // Para limpiar todos los datos de localStorage
+sessionStorage.clear(); // Para limpiar todos los datos de sessionStorage
+
 
 const CACHE_NAME = 'mi-app-cache-v1';
 // Archivos que se deben cachear

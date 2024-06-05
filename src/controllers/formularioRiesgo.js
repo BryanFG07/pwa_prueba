@@ -5,7 +5,7 @@ const connection = require('../models/db');
 // Manejamos la solicitud del registro
 router.post('/registrar', (req, res) => {
     const { folio_planta, fecha_relleno, litros, causa, nota } = req.body;
-    const query = "INSERT INTO pruebanodejs (folio_planta, fecha_relleno, litros, causa, nota) VALUES (?,?,?,?,?) ";
+    const query = "INSERT INTO riesgo (folio_planta, fecha_relleno, litros, causa, nota) VALUES (?,?,?,?,?) ";
     const values = [folio_planta, fecha_relleno, litros, causa, nota];
     connection.query(query, values, (error, results) => {
         if (error) {
