@@ -34,7 +34,9 @@ self.addEventListener('fetch', event => {
             if (response) {
                 return response; // Si la respuesta está en caché, retorna desde ahí
             }
-            return fetch(event.request); // Si no está en caché, realiza una solicitud de red
+            if (navigator.onLine) {
+                return fetch(event.request); // Si no está en caché, realiza una solicitud de red
+            }
         })
         .catch(error => {
             console.error('Error en la solicitud fetch:', error);
