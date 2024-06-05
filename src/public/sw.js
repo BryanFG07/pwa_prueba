@@ -7,6 +7,9 @@ const urlsToCache = [
     '/js/formRiesgo.js',
     '/icons/icon.png',
     '/js/indexedDB.js',
+    '/js/indexedDBsw.js',
+    '/js/serviceWorked.js',
+    '/index.html'
 ];
 
 // Instalación del Service Worker y almacenamiento en caché

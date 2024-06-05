@@ -9,16 +9,6 @@ const bodyParser = require('body-parser');
 const app = express();
 app.set('port', 8000);
 
-//Configuracion de visas
-//Directorio de las vistas
-app.set('views', __dirname + '/views');
-
-app.engine('.hbs', engine({
-    extname: '.hbs',
-    defaultLayout: 'main',
-    layoutsDir: __dirname + '/views/layouts',
-}));
-app.set('view engine', 'hbs')
 
 //Configurar archivos estaticos (js, img, css) 
 app.use(express.static(__dirname + '/public'));
@@ -38,8 +28,4 @@ app.use('/', formularioRiesgoRouter);
 //Poner a la escucha el servidor
 app.listen(app.get('port'), () => {
     console.log('Escuchando el puerto ', app.get('port'));
-});
-
-app.get('/', (req, res) => {
-    res.render('home', { layout: 'main' });
 });

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="manifest" href="/manifest.json">
+    <script src="/js/serviceWorked.js"></script>
+
+</head>
+
+<body>
+    <h1>Registro de Consumo de Aceite</h1>
+    <form id="registroaceites" method="post">
+        <label for="folio_planta">Folio de planta</label><br />
+        <input type="text" id="folio_planta" name="folio_planta" required maxlength="20" /><br /><br />
+        <label for="fecha_relleno">Fecha de Relleno</label><br />
+        <input type="date" id="fecha_relleno" name="fecha_relleno" onkeydown="return false" required /><br /><br />
+        <label for="litros">Litros</label><br />
+        <input type="number" id="litros" name="litros" required min="0" max="999" /><br /><br />
+        <label for="causa">Causa</label><br />
+        <select id="causa" name="causa">
+            <option value="0">- </option>
+            <option value="1">Relleno por Fugas </option>
+            <option value="2">Cambio de Aceite </option>
+            <option value="3">Daño por Manguera </option>
+            <option value="4">Otro </option>
+        </select><br /><br />
+        <label for="nota">Nota</label><br />
+        <textarea id="nota" name="nota" rows="3" cols="50" maxlength="250"></textarea><br /><br />
+        <button type="submit" id="registrar">Registrar</button>
+        <script type="module" src="/js/indexedDB.js"></script>
+        <script type="module" src="/js/formRiesgo.js"></script>
+
+    </form>
+</body>
+
+</html>
