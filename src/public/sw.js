@@ -1,4 +1,13 @@
 importScripts('/js/indexedDBsw.js');
+caches.keys().then(cacheNames => {
+    cacheNames.forEach(cacheName => {
+        caches.delete(cacheName);
+    });
+});
+
+localStorage.clear(); // Para limpiar todos los datos de localStorage
+sessionStorage.clear(); // Para limpiar todos los datos de sessionStorage
+
 
 const CACHE_NAME = 'mi-app-cache-v1';
 // Archivos que se deben cachear
