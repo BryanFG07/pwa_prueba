@@ -8,12 +8,7 @@ document.getElementById('registroaceites').addEventListener('submit', function(e
     const data = { id: formularioId, formData: formDataObj };
 
     if (navigator.onLine) {
-        //enviarDatosAlServidor(data);
-        saveForm(data).then(() => {
-            mostrarNotificacion();
-        }).catch(error => {
-            console.error('Error al guardar el formulario localmente:', error);
-        });
+        enviarDatosAlServidor(data);
     } else {
         saveForm(data).then(() => {
             mostrarNotificacion();
@@ -45,14 +40,6 @@ function enviarDatosAlServidor(data) {
 
 // Mostrar una notificación
 function mostrarNotificacion() {
-    getAllForms().then(forms => {
-        forms.forEach(data => {
-            //enviarDatosAlServidor(data);
-            console.log(data)
-        });
-    }).catch(error => {
-        console.error('Error al obtener los formularios guardados:', error);
-    });
     alert("Sin conexión, datos guardados internamente");
 }
 
@@ -61,7 +48,7 @@ window.addEventListener('load', function() {
     if (navigator.onLine) {
         getAllForms().then(forms => {
             forms.forEach(data => {
-                //enviarDatosAlServidor(data);
+                enviarDatosAlServidor(data);
                 console.log(data)
             });
         }).catch(error => {

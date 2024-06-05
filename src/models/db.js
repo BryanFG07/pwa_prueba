@@ -1,9 +1,9 @@
 const mysql = require('mysql2');
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'davrod@localhost',
-    password: 'Temporal1',
-    database: 'riesgo'
+    host: 'viaduct.proxy.rlwy.net',
+    user: 'root',
+    password: 'XvSZOmnXWtLUhctrBVgpflhfQENicRiV',
+    database: 'railway'
 });
 
 connection.connect((err) => {
