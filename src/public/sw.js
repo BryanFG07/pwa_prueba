@@ -1,13 +1,4 @@
 importScripts('/js/indexedDBsw.js');
-caches.keys().then(cacheNames => {
-    cacheNames.forEach(cacheName => {
-        caches.delete(cacheName);
-    });
-});
-
-localStorage.clear(); // Para limpiar todos los datos de localStorage
-sessionStorage.clear(); // Para limpiar todos los datos de sessionStorage
-
 
 const CACHE_NAME = 'mi-app-cache-v1';
 // Archivos que se deben cachear
@@ -18,7 +9,7 @@ const urlsToCache = [
     '/js/indexedDB.js',
     '/js/indexedDBsw.js',
     '/js/serviceWorked.js',
-    '/index.html'
+    'index.html'
 ];
 
 // Instalación del Service Worker y almacenamiento en caché
@@ -28,6 +19,9 @@ self.addEventListener('install', event => {
         .then(cache => {
             console.log('Cache abierto');
             return cache.addAll(urlsToCache);
+        })
+        .catch(error => {
+            console.error('Error al abrir el cache o agregar archivos al cache:', error);
         })
     );
 });
@@ -41,6 +35,9 @@ self.addEventListener('fetch', event => {
                 return response; // Si la respuesta está en caché, retorna desde ahí
             }
             return fetch(event.request); // Si no está en caché, realiza una solicitud de red
+        })
+        .catch(error => {
+            console.error('Error en la solicitud fetch:', error);
         })
     );
 });
