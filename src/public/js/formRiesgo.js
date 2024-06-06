@@ -28,7 +28,7 @@ function enviarDatosAlServidor(data) {
         }
     }).then(response => {
         if (response.ok) {
-            alert("Registro guardado correctamente, folio: " + data.folio_planta);
+            alert("Registro guardado correctamente, folio: " + data.id);
             deleteForm(data.id);
         } else {
             return Promise.reject('Failed to send data to server');
