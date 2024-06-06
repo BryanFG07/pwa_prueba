@@ -28,8 +28,8 @@ function enviarDatosAlServidor(data) {
         }
     }).then(response => {
         if (response.ok) {
+            alert("Registro guardado correctamente, folio: " + data.folio_planta);
             deleteForm(data.id);
-            alert("Registro guardado correctamente");
         } else {
             return Promise.reject('Failed to send data to server');
         }
@@ -47,10 +47,15 @@ function mostrarNotificacion() {
 window.addEventListener('load', function() {
     if (navigator.onLine) {
         getAllForms().then(forms => {
-            forms.forEach(data => {
-                enviarDatosAlServidor(data);
-                console.log(data)
-            });
+            if(forms.length > 0 ){
+                let confirmacion = confirm("¿Deseas guardar los registros almacenados en memoria?");
+                if (confirmacion) {
+                    forms.forEach(data => {
+                        enviarDatosAlServidor(data);
+                        //console.log(data);
+                    });
+                }
+            }
         }).catch(error => {
             console.error('Error al obtener los formularios guardados:', error);
         });

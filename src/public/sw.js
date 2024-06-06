@@ -9,6 +9,7 @@ const urlsToCache = [
     '/js/indexedDB.js',
     '/js/indexedDBsw.js',
     '/js/serviceWorked.js',
+    'manifest.json',
     'index.html'
 ];
 
